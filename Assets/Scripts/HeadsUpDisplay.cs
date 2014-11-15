@@ -30,7 +30,13 @@ public class HeadsUpDisplay : MonoBehaviour
 		const float topMargin = 15.0f;
 		const float outerMargin = 35.0f;
 		const float scoreHeight = 40.0f;
-
+		
+		Texture2D healthColor = new Texture2D(1, 1);
+		healthColor.SetPixel(0, 0, player.HUDColor);
+		healthColor.Apply();
+		GUI.skin.box.normal.background = healthColor;
+		GUI.Box(new Rect(topLeft.x + outerMargin / 2, topLeft.y + topMargin / 2, width / 2 * player.health / 100, 10), GUIContent.none);
+		
 		GUIStyle scoreStyle = new GUIStyle("label");
 		scoreStyle.fontSize = 40;
 		scoreStyle.alignment = alignment;
@@ -44,4 +50,5 @@ public class HeadsUpDisplay : MonoBehaviour
 		GUI.Label (new Rect(topLeft.x + outerMargin, topLeft.y + topMargin + scoreHeight, width - outerMargin * 2, height), player.name, nameStyle);
 
 	}
+	
 }

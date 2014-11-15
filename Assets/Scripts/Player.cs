@@ -17,7 +17,14 @@ public class Player : MonoBehaviour
 	public Color HUDColor;
 
 	public int Score { get; private set; }
-
+	
+	public int health{
+		get
+		{
+			return this.PlayerController.health;
+		}
+	}
+	
 	public Player ()
 	{
 		this.Score = 0;
@@ -43,7 +50,7 @@ public class Player : MonoBehaviour
 	void FixedUpdate ()
 	{
 		float h = this.PlayerController.HorizontalMovementAxis;
-		float v = this.PlayerController.VericalMovementAxis;
+		float v = this.PlayerController.VerticalMovementAxis;
 
 		this.rigidbody.AddForce (new Vector3(h * this.MovementForce, 0.0f, v * this.MovementForce));
 
@@ -64,6 +71,13 @@ public class Player : MonoBehaviour
 		{
 			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
 			this.IsOnGround = false;
+		}
+	}
+	
+	public void OnCollisionEnter(Collision collision){
+		if (collision.gameObject.tag == "Player"){
+			this.PlayerController.takeDamage();
+			this.Score++;
 		}
 	}
 
