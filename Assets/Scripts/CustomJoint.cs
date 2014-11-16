@@ -97,6 +97,14 @@ public class CustomJoint : MonoBehaviour {
 		joint.connectedBody = this.Player1.GetComponent<Rigidbody>();
 	}
 
+	public void DestroyJoint()
+	{
+		Destroy (this.Player0.GetComponent<Joint> ());
+		for (int i = 0; i < 9; i++)
+		{
+			Destroy(this.jointPoints[i].GetComponent<Joint>());
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 	}

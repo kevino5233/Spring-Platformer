@@ -12,11 +12,15 @@ public class EndScreenHUD : MonoBehaviour {
 		string winText = "It was a draw";
 		if (PlayerPrefs.GetString("winner") == "0")
 		{
-			winText = "Player 1 Wins";
+			winText = "PLAYER 1 WINS";
 		}
 		else if (PlayerPrefs.GetString("winner") == "1")
 		{
-			winText = "Player 2 Wins";
+			winText = "PLAYER 2 WINS";
+		}
+		else if (PlayerPrefs.GetString("winner") == "lose")
+		{
+			winText = "YOU BOTH LOSE";
 		}
 		GUI.Label (new Rect ((Screen.width / 2 - 50.0f), (Screen.height / 2 - 100.0f), 100.0f, 60.0f), winText);
 		if (GUI.Button(new Rect((Screen.width/2 - 50.0f), (Screen.height/2 + 50.0f), 100, 30), "Play Again")) {
