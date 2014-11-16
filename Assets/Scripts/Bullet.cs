@@ -20,11 +20,8 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == "Wall")
-		{
-			Destroy(this.gameObject);
-		}
-		else if (collider.gameObject.tag == "Enemy")
+		Debug.Log(collider.gameObject.name);
+		if (collider.gameObject.tag == "Enemy")
 		{
 			if (this.playerNumber == 0)
 			{
@@ -35,6 +32,7 @@ public class Bullet : MonoBehaviour {
 				GameObject.Find("Player1").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
 			}
 			Destroy(this.gameObject);
+			collider.gameObject.GetComponent<GoatStabilizer>().Freeze();
 		}
 	}
 }

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 	
-	public void takeDamage(){
+	public void TakeDamage(){
 		health -= 1;
 //		Debug.Log(PlayerNumber + ": " + health);
 	}
