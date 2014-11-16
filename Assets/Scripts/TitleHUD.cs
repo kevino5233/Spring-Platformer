@@ -9,7 +9,10 @@ public class TitleHUD : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Label (new Rect ((Screen.width / 2 - 200.0f), (Screen.height / 2 - 100.0f), 400.0f, 60.0f), "The Rod, The String and The Spring/Ball and Chains");
+		GUIStyle titleStyle = new GUIStyle("label");
+		titleStyle.fontSize = 40;
+		titleStyle.normal.textColor = Color.black;
+		GUI.Label (new Rect ((Screen.width / 2 - 150.0f), (Screen.height / 2 - 100.0f), 400.0f, 60.0f), "Spring Fighters", titleStyle);
 		if (GUI.Button(new Rect((Screen.width/2 - 50.0f), (Screen.height/2 + 50.0f), 100, 30), "Play Game")) {
 			Application.LoadLevel("Level3");
 		}
