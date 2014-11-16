@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
 	public float MovementForce;
 	public float MaxSpeed;
-	public float JumpForce;
+	public float PullForce;
+	public float PushForce;
 
 	public GameObject GroundContactDelta;
 	public GameObject BulletPrefab;
@@ -55,6 +56,32 @@ public class Player : MonoBehaviour
 				bullet.GetComponent<Bullet>().playerNumber = this.PlayerController.PlayerNumber;
 				this.fireTime = Time.time;
 			}
+		}
+		if (this.PlayerController.PushButton)
+		{
+			string player = "Player0";
+			if (this.PlayerController.PlayerNumber == 0)
+			{
+				player = "Player1";
+			}
+			Vector3 unitVector = GameObject.Find(player).transform.localPosition - this.gameObject.transform.localPosition;
+			unitVector = unitVector.normalized;
+			Vector3 forceVector = unitVector*this.PushForce;
+			Debug.Log(forceVector);
+			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
+		}
+		else if (this.PlayerController.PullButton)
+		{
+			string player = "Player0";
+			if (this.PlayerController.PlayerNumber == 0)
+			{
+				player = "Player1";
+			}
+			Vector3 unitVector = this.gameObject.transform.localPosition - GameObject.Find(player).transform.localPosition;
+			unitVector = unitVector.normalized;
+			Vector3 forceVector = unitVector*this.PullForce;
+			Debug.Log(forceVector);
+			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
 		}
 	}
 

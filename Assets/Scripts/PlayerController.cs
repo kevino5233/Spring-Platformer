@@ -47,6 +47,22 @@ public class PlayerController : MonoBehaviour {
 			return Input.GetAxis (string.Format ("VerticalBullet[{0}]", this.PlayerNumber));
 		}
 	}
+
+	public bool PushButton
+	{
+		get
+		{
+			return Input.GetButtonDown(string.Format("Push[{0}]", this.PlayerNumber));
+		}
+	}
+
+	public bool PullButton
+	{
+		get
+		{
+			return Input.GetButtonDown(string.Format("Pull[{0}]", this.PlayerNumber));
+		}
+	}
 	
 	public void TakeDamage(int damage){
 		health -= damage;
