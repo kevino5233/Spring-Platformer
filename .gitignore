@@ -39,6 +39,8 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+*.meta
+*.dwyt
 
 # ============ #
 # OS generated #

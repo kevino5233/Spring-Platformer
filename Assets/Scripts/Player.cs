@@ -48,9 +48,6 @@ public class Player : MonoBehaviour
 		{
 			if ((Time.time - this.fireTime) > 0.3)
 			{
-//				Debug.Log("Shoot this shit");
-//				Debug.Log (h);
-//				Debug.Log (v);
 				Vector3 dir = new Vector3(h, 0, v);
 				GameObject bullet = (GameObject)Instantiate(BulletPrefab);
 				bullet.transform.localPosition = this.transform.localPosition + dir*5;
@@ -73,7 +70,6 @@ public class Player : MonoBehaviour
 		{
 			this.rigidbody.velocity = new Vector3(Mathf.Sign (this.rigidbody.velocity.x) * maxSpeedX, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
 		}
-
 		float maxSpeedZ = Mathf.Abs (this.MaxSpeed * v);
 		if (Mathf.Abs(this.rigidbody.velocity.z) > maxSpeedZ)
 		{
@@ -87,7 +83,7 @@ public class Player : MonoBehaviour
 	}
 	
 	public void OnCollisionEnter(Collision collision){
-		if (collision.gameObject.name == "goat"){
+		if (collision.gameObject.name == "Goat"){
 			this.PlayerController.TakeDamage();
 		}
 	}
