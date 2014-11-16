@@ -59,9 +59,16 @@ public class FollowPlayers : MonoBehaviour
 			{
 				winner = "draw";
 			}
+			PlayerPrefs.SetString ("winner", winner);
+			Invoke ("EndLevel", 1);
+		} else {
+			PlayerPrefs.SetString("winner", "lose");
+			Invoke ("NextLevel", 1);
 		}
-		PlayerPrefs.SetString ("winner", winner);
-		Invoke ("EndLevel", 1);
+	}
+	
+	void NextLevel(){
+		Application.LoadLevel("LevelEndScreen");
 	}
 
 	void EndLevel()
