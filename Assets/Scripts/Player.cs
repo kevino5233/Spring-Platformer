@@ -42,9 +42,7 @@ public class Player : MonoBehaviour
 
 	void Update ()
 	{
-		Ray ray = new Ray(this.transform.position, Vector3.down);
-		float maximumDistance = -this.GroundContactDelta.transform.localPosition.y;
-//		this.IsOnGround = Physics.Raycast(ray, maximumDistance);
+		this.IsOnGround = true;
 	}
 
 	void FixedUpdate ()
@@ -65,28 +63,5 @@ public class Player : MonoBehaviour
 		{
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, this.rigidbody.velocity.y, Mathf.Sign (this.rigidbody.velocity.z) * maxSpeedZ);
     	}
-
-		bool jump = this.PlayerController.Jump;
-		if (jump && this.IsOnGround)
-		{
-			this.rigidbody.AddForce(new Vector3(0.0f, this.JumpForce, 0.0f));
-			this.IsOnGround = false;
-		}
-	}
-	
-	public void OnCollisionEnter(Collision collision){
-		Debug.Log (collision.gameObject.name);
-		if (collision.gameObject.tag == "Player"){
-			this.PlayerController.takeDamage();
-			this.Score++;
-		}
-		if (collision.gameObject.name == "MovableWall"){
-			Debug.Log("Collided with the moving wall");
-		}
-	}
-
-	public void OnCollected(Collectable collectable)
-	{
-		this.Score++;
 	}
 }

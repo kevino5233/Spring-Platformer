@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		get
 		{
+			Debug.Log(Input.GetAxis(string.Format ("Horizontal[{0}]", this.PlayerNumber)));
 			return Input.GetAxis(string.Format ("Horizontal[{0}]", this.PlayerNumber));
 		}
 	}
@@ -24,11 +25,27 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 	
-	public bool Jump
+//	public bool Jump
+//	{
+//		get
+//		{
+//			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
+//		}
+//	}
+
+	public float ShootHorizontalAxis
 	{
 		get
 		{
-			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
+			return Input.GetAxis (string.Format ("HorizontalBullet[{0}]", this.PlayerNumber));
+		}
+	}
+
+	public float ShootVerticalAxis
+	{
+		get
+		{
+			return Input.GetAxis (string.Format ("VerticalBullet[{0}]", this.PlayerNumber));
 		}
 	}
 	
