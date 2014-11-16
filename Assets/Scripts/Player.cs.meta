@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: ce442ac6da7e2432690f8cee9a01fc5c
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - GroundContactDelta: {instanceID: 0}
+  - BulletPrefab: {fileID: 100000, guid: dc9e3950e58fa9641ac418bec5cd309e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

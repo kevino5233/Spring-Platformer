@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
 	public float JumpForce;
 
 	public GameObject GroundContactDelta;
+	public GameObject BulletPrefab;
+	public static float BulletVelocity = 50;
 
 	private PlayerController PlayerController;
+	private float fireTime;
 
 	public bool IsOnGround { get; private set; }
 
@@ -33,11 +36,7 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		this.PlayerController = this.GetComponent<PlayerController>();
-
-		JollyDebug.Watch (this, "IsOnGround", delegate ()
-		{
-			return this.IsOnGround;
-		});
+		this.fireTime = Time.deltaTime;
 	}
 
 	void Update ()
@@ -45,12 +44,20 @@ public class Player : MonoBehaviour
 		this.IsOnGround = true;
 		float h = this.PlayerController.ShootHorizontalAxis;
 		float v = this.PlayerController.ShootVerticalAxis;
-//		Debug.Log (h);
-//		Debug.Log (v);
-		if (h!=0.0 || v!=0.0)
+		if (Mathf.Abs(h)>=0.4 || Mathf.Abs(v)>=0.4)
 		{
-			Debug.Log (h);
-			Debug.Log (v);
+			if ((Time.time - this.fireTime) > 0.3)
+			{
+//				Debug.Log("Shoot this shit");
+//				Debug.Log (h);
+//				Debug.Log (v);
+				Vector3 dir = new Vector3(h, 0, v);
+				GameObject bullet = (GameObject)Instantiate(BulletPrefab);
+				bullet.transform.localPosition = this.transform.localPosition + dir*5;
+				bullet.GetComponent<Rigidbody>().velocity = dir * 50;
+				bullet.GetComponent<Bullet>().playerNumber = this.PlayerController.PlayerNumber;
+				this.fireTime = Time.time;
+			}
 		}
 	}
 
@@ -72,5 +79,10 @@ public class Player : MonoBehaviour
 		{
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, this.rigidbody.velocity.y, Mathf.Sign (this.rigidbody.velocity.z) * maxSpeedZ);
     	}
+	}
+
+	void UpdateScore(int scoreChange)
+	{
+		this.Score = this.Score + scoreChange;
 	}
 }

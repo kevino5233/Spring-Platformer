@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MainScript : MonoBehaviour {
 
+	public GameObject BulletPrefab;
+	public GameObject[] players;
 	// Use this for initialization
 	void Start () {
 	
