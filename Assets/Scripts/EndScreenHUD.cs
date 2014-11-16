@@ -22,7 +22,10 @@ public class EndScreenHUD : MonoBehaviour {
 		{
 			winText = "YOU BOTH LOSE";
 		}
-		GUI.Label (new Rect ((Screen.width / 2 - 50.0f), (Screen.height / 2 - 100.0f), 100.0f, 60.0f), winText);
+		
+		GUIStyle winStyle = new GUIStyle("label");
+		winStyle.fontSize = 40;
+		GUI.Label (new Rect ((Screen.width / 2 - 150.0f), (Screen.height / 2 - 100.0f), 400.0f, 60.0f), winText, winStyle);
 		if (GUI.Button(new Rect((Screen.width/2 - 50.0f), (Screen.height/2 + 50.0f), 100, 30), "Play Again")) {
 			Application.LoadLevel("Level3");
 		}
