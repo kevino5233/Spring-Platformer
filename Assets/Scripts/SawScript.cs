@@ -19,13 +19,7 @@ public class SawScript : MonoBehaviour {
 		if (tag == "Player0" || tag == "Player1" || tag == "Joint")
 		{
 			GameObject.Find("JointObjects").GetComponent<CustomJoint>().DestroyJoint();
-			PlayerPrefs.SetString("winner", "lose");
-			Invoke("EndLevel",1);
+			GameObject.Find ("Camera").GetComponent<FollowPlayers> ().CalculateScoreAndEndLevel ("lose");
 		}
-	}
-
-	void EndLevel()
-	{
-		Application.LoadLevel("EndScreen");
 	}
 }

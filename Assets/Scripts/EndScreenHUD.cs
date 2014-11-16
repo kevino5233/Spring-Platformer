@@ -9,7 +9,7 @@ public class EndScreenHUD : MonoBehaviour {
 
 	void OnGUI () {
 		string winner = PlayerPrefs.GetString ("winner");
-		string winText = "It was a draw";
+		string winText = "ITS A DRAW";
 		if (PlayerPrefs.GetString("winner") == "0")
 		{
 			winText = "PLAYER 1 WINS";

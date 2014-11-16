@@ -36,6 +36,36 @@ public class FollowPlayers : MonoBehaviour
 		average /= this.Players.Length;
 		return average;
 	}
-	
 
+	public void CalculateScoreAndEndLevel(string winner)
+	{
+		float p0score = 0;
+		float p1score = 0;
+		p0score = GameObject.Find ("Player0").GetComponent<PlayerController> ().health + GameObject.Find ("Player0").GetComponent<Player> ().Score;
+		p1score = GameObject.Find ("Player1").GetComponent<PlayerController> ().health + GameObject.Find ("Player1").GetComponent<Player> ().Score;
+		PlayerPrefs.SetFloat ("P0Score", p0score);
+		PlayerPrefs.SetFloat ("P1Score", p1score);
+		if (winner == "win")
+		{
+			if (p0score>p1score)
+			{
+				winner = "0";
+			}
+			else if (p1score>p0score)
+			{
+				winner = "1";
+			}
+			else
+			{
+				winner = "draw";
+			}
+		}
+		PlayerPrefs.SetString ("winner", winner);
+		Invoke ("EndLevel", 1);
+	}
+
+	void EndLevel()
+	{
+		Application.LoadLevel ("EndScreen");
+	}
 }

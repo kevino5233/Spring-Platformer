@@ -31,17 +31,6 @@ public class CompleteLevel : MonoBehaviour {
 	}
 
 	void EndGame() {
-		string winplayer = "draw";
-		if (GameObject.Find("Player0").GetComponent<PlayerController>().health > GameObject.Find("Player1").GetComponent<PlayerController>().health)
-		{
-			winplayer = "0";
-		}
-		else if (GameObject.Find("Player0").GetComponent<PlayerController>().health < GameObject.Find("Player1").GetComponent<PlayerController>().health)
-		{
-			winplayer = "1";
-		}
-		string winPlayer = "1";
-		PlayerPrefs.SetString ("winner", winPlayer);
-		Application.LoadLevel ("EndScreen");
+		GameObject.Find ("Camera").GetComponent<FollowPlayers> ().CalculateScoreAndEndLevel ("win");
 	}
 }
