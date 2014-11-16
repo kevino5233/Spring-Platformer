@@ -5,7 +5,7 @@ public class GoatStabilizer : MonoBehaviour {
 	public static float TimeForPause = 5;
 	Vector3 frozenPos = Vector3.zero;
 
-	bool paused;
+	public bool paused;
 	float PauseTime;
 
 	void Start() {

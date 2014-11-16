@@ -16,11 +16,6 @@ public class HeadsUpDisplay : MonoBehaviour
 
 		const float restartButtonWidth = 100.0f;
 		const float restartButtonHeight = 40.0f;
-
-		if (GUI.Button (new Rect((Screen.width - restartButtonWidth)/2, Screen.height - restartButtonHeight - 10.0f, restartButtonWidth, restartButtonHeight), "Restart Game"))
-		{
-			Application.LoadLevel("ingame");
-		}
 	}
 
 	void DrawScore(TextAnchor alignment, Player player, Vector2 topLeft, float width, float height)

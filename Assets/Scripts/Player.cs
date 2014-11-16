@@ -67,7 +67,6 @@ public class Player : MonoBehaviour
 			Vector3 unitVector = GameObject.Find(player).transform.localPosition - this.gameObject.transform.localPosition;
 			unitVector = unitVector.normalized;
 			Vector3 forceVector = unitVector*this.PushForce;
-			Debug.Log(forceVector);
 			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
 		}
 		else if (this.PlayerController.PullButton)
@@ -80,7 +79,6 @@ public class Player : MonoBehaviour
 			Vector3 unitVector = this.gameObject.transform.localPosition - GameObject.Find(player).transform.localPosition;
 			unitVector = unitVector.normalized;
 			Vector3 forceVector = unitVector*this.PullForce;
-			Debug.Log(forceVector);
 			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
 		}
 	}

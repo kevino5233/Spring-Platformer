@@ -31,15 +31,18 @@ public class Bullet : MonoBehaviour {
 		}
 		else if (collider.gameObject.tag == "Enemy")
 		{
-			if (this.playerNumber == 0)
+			if (!collider.gameObject.GetComponent<GoatStabilizer>().paused)
 			{
-				GameObject.Find("Player0").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
+				if (this.playerNumber == 0)
+				{
+					GameObject.Find("Player0").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
+				}
+				else
+				{
+					GameObject.Find("Player1").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
+				}
+				collider.gameObject.GetComponent<GoatStabilizer>().Freeze();
 			}
-			else
-			{
-				GameObject.Find("Player1").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
-			}
-			collider.gameObject.GetComponent<GoatStabilizer>().Freeze();
 			Destroy(this.gameObject);
 		}
 	}
