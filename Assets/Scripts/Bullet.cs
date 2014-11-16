@@ -20,10 +20,6 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-<<<<<<< HEAD
-		Debug.Log(collider.gameObject.name);
-		if (collider.gameObject.tag == "Enemy")
-=======
 		if (collider.gameObject.tag == "Wall")
 		{
 			Destroy(this.gameObject);
@@ -34,7 +30,6 @@ public class Bullet : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 		else if (collider.gameObject.tag == "Enemy")
->>>>>>> 839f60bc4e1933072e6acaeae98c7ef8678740b1
 		{
 			if (this.playerNumber == 0)
 			{

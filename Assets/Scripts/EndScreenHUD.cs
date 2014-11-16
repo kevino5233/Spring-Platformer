@@ -9,8 +9,16 @@ public class EndScreenHUD : MonoBehaviour {
 
 	void OnGUI () {
 		string winner = PlayerPrefs.GetString ("winner");
-		winner = "1";
-		GUI.Label (new Rect ((Screen.width / 2 - 50.0f), (Screen.height / 2 - 100.0f), 100.0f, 60.0f), "Player "+winner+" Wins");
+		string winText = "It was a draw";
+		if (PlayerPrefs.GetString("winner") == "0")
+		{
+			winText = "Player 1 Wins";
+		}
+		else if (PlayerPrefs.GetString("winner") == "1")
+		{
+			winText = "Player 2 Wins";
+		}
+		GUI.Label (new Rect ((Screen.width / 2 - 50.0f), (Screen.height / 2 - 100.0f), 100.0f, 60.0f), winText);
 		if (GUI.Button(new Rect((Screen.width/2 - 50.0f), (Screen.height/2 + 50.0f), 100, 30), "Play Again")) {
 			Application.LoadLevel("Level3");
 		}
