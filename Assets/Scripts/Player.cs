@@ -75,9 +75,13 @@ public class Player : MonoBehaviour
 	}
 	
 	public void OnCollisionEnter(Collision collision){
+		Debug.Log (collision.gameObject.name);
 		if (collision.gameObject.tag == "Player"){
 			this.PlayerController.takeDamage();
 			this.Score++;
+		}
+		if (collision.gameObject.name == "MovableWall"){
+			Debug.Log("Collided with the moving wall");
 		}
 	}
 

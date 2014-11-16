@@ -10,6 +10,6 @@ public class PlayerFollower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 30, -30);
+		transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 60, 0);
 	}
 }

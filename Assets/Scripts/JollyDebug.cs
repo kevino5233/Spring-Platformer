@@ -267,7 +267,7 @@ namespace Jolly
 		public static void Watch (MonoBehaviour owner, string name, System.Func<bool> returnsBool)
 		{
 			JollyDebug self = JollyDebug.Instance;
-			self.GetExpressionsForOwner(owner).Add (new Expression(name, returnsBool));
+//			self.GetExpressionsForOwner(owner).Add (new Expression(name, returnsBool));
 		}
 		
 		[System.Diagnostics.Conditional("DEBUG"), System.Diagnostics.Conditional("UNITY_EDITOR")]
