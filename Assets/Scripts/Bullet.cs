@@ -24,6 +24,11 @@ public class Bullet : MonoBehaviour {
 		{
 			Destroy(this.gameObject);
 		}
+		else if (collider.gameObject.tag == "WallMov")
+		{
+			collider.gameObject.GetComponent<MovableWall>().SendMessage("Pause");
+			Destroy(this.gameObject);
+		}
 		else if (collider.gameObject.tag == "Enemy")
 		{
 			if (this.playerNumber == 0)
