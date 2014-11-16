@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 	{
 		Ray ray = new Ray(this.transform.position, Vector3.down);
 		float maximumDistance = -this.GroundContactDelta.transform.localPosition.y;
-		this.IsOnGround = Physics.Raycast(ray, maximumDistance);
+//		this.IsOnGround = Physics.Raycast(ray, maximumDistance);
 	}
 
 	void FixedUpdate ()
