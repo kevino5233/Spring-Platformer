@@ -24,16 +24,32 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 	
-	public bool Jump
+//	public bool Jump
+//	{
+//		get
+//		{
+//			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
+//		}
+//	}
+
+	public float ShootHorizontalAxis
 	{
 		get
 		{
-			return Input.GetButtonDown(string.Format ("Jump[{0}]", this.PlayerNumber));
+			return Input.GetAxis (string.Format ("HorizontalBullet[{0}]", this.PlayerNumber));
+		}
+	}
+
+	public float ShootVerticalAxis
+	{
+		get
+		{
+			return Input.GetAxis (string.Format ("VerticalBullet[{0}]", this.PlayerNumber));
 		}
 	}
 	
 	public void takeDamage(){
 		health -= 1;
-		Debug.Log(PlayerNumber + ": " + health);
+//		Debug.Log(PlayerNumber + ": " + health);
 	}
 }

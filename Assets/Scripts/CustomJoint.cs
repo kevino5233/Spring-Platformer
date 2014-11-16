@@ -16,11 +16,9 @@ public class CustomJoint : MonoBehaviour {
 		unitVector = unitVector.normalized;
 		float dist = Vector3.Distance (redStart, bluStart);
 		float factor = dist / 10.0f;
-		Debug.Log (unitVector);
 //		this.bluPlayer.AddComponent<SpringJoint> ();
 //		SpringJoint joint = this.bluPlayer.GetComponent<SpringJoint> ();
 		this.jointPoints [0].transform.localPosition = bluStart + unitVector * (factor);
-		Debug.Log (this.jointPoints [0].transform.localPosition);
 //		joint.minDistance = 0.0f;
 //		joint.maxDistance = 0.5f;
 //		joint.spring = 10f;
