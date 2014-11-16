@@ -9,16 +9,8 @@ public class EndScreenHUD : MonoBehaviour {
 
 	void OnGUI () {
 		string winner = PlayerPrefs.GetString ("winner");
-		string winText = "ITS A DRAW";
-		if (PlayerPrefs.GetString("winner") == "0")
-		{
-			winText = "PLAYER 1 WINS";
-		}
-		else if (PlayerPrefs.GetString("winner") == "1")
-		{
-			winText = "PLAYER 2 WINS";
-		}
-		else if (PlayerPrefs.GetString("winner") == "lose")
+		string winText = "ITS A DRAW. YOU WEREN'T COMPETITIVE ENOUGH";
+		if (PlayerPrefs.GetString("winner") == "lose")
 		{
 			winText = "YOU BOTH LOSE";
 		}
@@ -34,6 +26,10 @@ public class EndScreenHUD : MonoBehaviour {
 			if (LevelName == "Level3")
 			{
 				Application.LoadLevel("Level4");
+			}
+			else if (LevelName == "Level4")
+			{
+				Application.LoadLevel("Level5");
 			}
 			else if (LevelName == "Level5")
 			{

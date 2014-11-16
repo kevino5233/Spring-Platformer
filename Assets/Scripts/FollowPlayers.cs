@@ -68,13 +68,25 @@ public class FollowPlayers : MonoBehaviour
 			{
 				winner = "draw";
 			}
+			PlayerPrefs.SetString ("winner", winner);
+			Invoke ("EndLevel", 1);
+		} else {
+			PlayerPrefs.SetString("winner", "lose");
+			Invoke ("NextLevel", 1);
 		}
+<<<<<<< HEAD
+	}
+	
+	void NextLevel(){
+		Application.LoadLevel("LevelEndScreen");
+=======
 		PlayerPrefs.SetString ("winner", winner);
 		PlayerPrefs.SetString ("lastlevel", Application.loadedLevelName);
 		GameObject.Find ("Camera").GetComponent<AudioSource> ().Stop ();
 		GameObject.Find ("GameEndSound").GetComponent<AudioSource> ().Play ();
 		Debug.Log (GameObject.Find ("GameEndSound").GetComponent<AudioSource> ());
 		Invoke ("EndLevel", 1);
+>>>>>>> 7334dedab9d5b04883cb366ade86f9c813c5247e
 	}
 
 	void EndLevel()
