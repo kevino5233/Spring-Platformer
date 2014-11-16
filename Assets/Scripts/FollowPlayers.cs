@@ -70,6 +70,7 @@ public class FollowPlayers : MonoBehaviour
 			}
 		}
 		PlayerPrefs.SetString ("winner", winner);
+		PlayerPrefs.SetString ("lastlevel", Application.loadedLevelName);
 		GameObject.Find ("Camera").GetComponent<AudioSource> ().Stop ();
 		GameObject.Find ("GameEndSound").GetComponent<AudioSource> ().Play ();
 		Debug.Log (GameObject.Find ("GameEndSound").GetComponent<AudioSource> ());
