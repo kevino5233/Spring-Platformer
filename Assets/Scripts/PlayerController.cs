@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		get
 		{
-			Debug.Log(Input.GetAxis(string.Format ("Horizontal[{0}]", this.PlayerNumber)));
 			return Input.GetAxis(string.Format ("Horizontal[{0}]", this.PlayerNumber));
 		}
 	}
@@ -51,6 +50,6 @@ public class PlayerController : MonoBehaviour {
 	
 	public void takeDamage(){
 		health -= 1;
-		Debug.Log(PlayerNumber + ": " + health);
+//		Debug.Log(PlayerNumber + ": " + health);
 	}
 }

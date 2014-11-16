@@ -43,6 +43,15 @@ public class Player : MonoBehaviour
 	void Update ()
 	{
 		this.IsOnGround = true;
+		float h = this.PlayerController.ShootHorizontalAxis;
+		float v = this.PlayerController.ShootVerticalAxis;
+//		Debug.Log (h);
+//		Debug.Log (v);
+		if (h!=0.0 || v!=0.0)
+		{
+			Debug.Log (h);
+			Debug.Log (v);
+		}
 	}
 
 	void FixedUpdate ()
