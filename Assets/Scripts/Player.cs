@@ -48,9 +48,6 @@ public class Player : MonoBehaviour
 		{
 			if ((Time.time - this.fireTime) > 0.3)
 			{
-//				Debug.Log("Shoot this shit");
-//				Debug.Log (h);
-//				Debug.Log (v);
 				Vector3 dir = new Vector3(h, 0, v);
 				GameObject bullet = (GameObject)Instantiate(BulletPrefab);
 				bullet.transform.localPosition = this.transform.localPosition + dir*5;
@@ -65,7 +62,6 @@ public class Player : MonoBehaviour
 	{
 		float h = this.PlayerController.HorizontalMovementAxis;
 		float v = this.PlayerController.VerticalMovementAxis;
-
 		this.rigidbody.AddForce (new Vector3(h * this.MovementForce, 0.0f, v * this.MovementForce));
 
 		float maxSpeedX = Mathf.Abs (this.MaxSpeed * h);
@@ -84,12 +80,6 @@ public class Player : MonoBehaviour
 	public void UpdateScore(int scoreChange)
 	{
 		this.Score = this.Score + scoreChange;
-	}
-	
-	public void OnCollisionEnter(Collision collision){
-		if (collision.gameObject.name == "goat"){
-			this.PlayerController.TakeDamage();
-		}
 	}
 	
 	public void OnTriggerEnter(Collider collider){

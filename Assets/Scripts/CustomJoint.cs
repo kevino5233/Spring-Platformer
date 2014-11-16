@@ -71,8 +71,8 @@ public class CustomJoint : MonoBehaviour {
 		this.jointType = "spring";
 		this.Player0.AddComponent<SpringJoint> ();
 		SpringJoint joint = this.Player0.GetComponent<SpringJoint> ();
-		joint.spring = 500f;
-		joint.damper = 0.2f;
+		joint.spring = 50;
+		joint.damper = 0.0f;
 		joint.minDistance = 0.0f;
 		joint.maxDistance = 0.5f;
 		joint.anchor = Vector3.zero;
@@ -80,8 +80,8 @@ public class CustomJoint : MonoBehaviour {
 		for (int i = 0; i < 8; i++) {
 			this.jointPoints[i].AddComponent<SpringJoint>();
 			SpringJoint tempJoint = this.jointPoints[i].GetComponent<SpringJoint>();
-			tempJoint.spring = 500;
-			tempJoint.damper = 0.2f;
+			tempJoint.spring = 50;
+			tempJoint.damper = 0.0f;
 			tempJoint.minDistance = 0.0f;
 			tempJoint.maxDistance = 0.5f;
 			tempJoint.anchor = Vector3.zero;
@@ -89,8 +89,8 @@ public class CustomJoint : MonoBehaviour {
 		}
 		this.jointPoints[8].AddComponent<SpringJoint>();
 		joint = this.jointPoints[8].GetComponent<SpringJoint>();
-		joint.spring = 500f;
-		joint.damper = 0.2f;
+		joint.spring = 50;
+		joint.damper = 0.0f;
 		joint.minDistance = 0.0f;
 		joint.maxDistance = 0.5f;
 		joint.anchor = Vector3.zero;

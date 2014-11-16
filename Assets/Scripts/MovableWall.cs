@@ -26,7 +26,6 @@ public class MovableWall : MonoBehaviour {
 
 	void Pause()
 	{
-		Debug.Log ("Here");
 		iTween.Pause (this.gameObject);
 		this.paused = true;
 		this.PauseTime = Time.time;

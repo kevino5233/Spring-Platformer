@@ -2,25 +2,43 @@
 using System.Collections;
 
 public class GoatStabilizer : MonoBehaviour {
-
+	public static float TimeForPause = 5;
 	Vector3 frozenPos = Vector3.zero;
 
-	bool frozen = false;
-	int framesFrozenMax = 120;
-	int framesFrozenElapsed = 120;
+	bool paused;
+	float PauseTime;
 
+	void Start() {
+		paused = false;
+		PauseTime = Time.time;
+	}
 	void Update () {
-		Vector3 angle = this.rigidbody.transform.eulerAngles;
-		angle.x = 90;
-		this.rigidbody.transform.eulerAngles = angle;
-		if (frozen && framesFrozenElapsed++ < framesFrozenMax){
-			this.rigidbody.transform.position = frozenPos;
+		if (paused)
+		{
+			if ((Time.time - this.PauseTime) > TimeForPause)
+			{
+				iTween.Resume(this.gameObject);
+				this.PauseTime = Time.time;
+				this.paused = false;
+			}
+		}
+	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.name == "Player0")
+		{
+			collision.gameObject.GetComponent<PlayerController>().TakeDamage(2);
+		}
+		else if (collision.gameObject.name == "Player1")
+		{
+			collision.gameObject.GetComponent<PlayerController>().TakeDamage(2);
 		}
 	}
 	
 	public void Freeze(){
-		frozen = true;
-		framesFrozenElapsed = 0;
-		frozenPos = this.rigidbody.transform.position;
+		iTween.Pause (this.gameObject);
+		this.paused = true;
+		this.PauseTime = Time.time;
 	}
 }

@@ -10,17 +10,17 @@ namespace Jolly
 		{
 			return new Vector3(value, self.y, self.z);
 		}
-
+		
 		public static Vector3 SetY(this Vector3 self, float value)
 		{
 			return new Vector3(self.x, value, self.z);
 		}
-			                   
+		
 		public static Vector3 SetZ(this Vector3 self, float value)
 		{
 			return new Vector3(self.x, self.y, value);
 		}
-
+		
 		public static Vector3 SetXY(this Vector3 self, float xValue, float yValue)
 		{
 			return new Vector3(xValue, yValue, self.z);
@@ -32,4 +32,3 @@ namespace Jolly
 		}
 	}
 }
-

@@ -39,8 +39,8 @@ public class Bullet : MonoBehaviour {
 			{
 				GameObject.Find("Player1").GetComponent<Player>().SendMessage("UpdateScore", 1.0f);
 			}
-			Destroy(this.gameObject);
 			collider.gameObject.GetComponent<GoatStabilizer>().Freeze();
+			Destroy(this.gameObject);
 		}
 	}
 }
