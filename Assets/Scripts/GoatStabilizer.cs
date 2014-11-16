@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GoatStabilizer : MonoBehaviour {
-	public static float TimeForPause = 3;
+	public static float TimeForPause = 1.5f;
 	Vector3 frozenPos = Vector3.zero;
 
 	public bool paused;

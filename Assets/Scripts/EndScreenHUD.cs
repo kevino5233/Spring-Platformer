@@ -33,8 +33,13 @@ public class EndScreenHUD : MonoBehaviour {
 			string LevelName = PlayerPrefs.GetString("lastlevel");
 			if (LevelName == "Level3")
 			{
-				Application.LoadLevel("Level_2_Final");
+				Application.LoadLevel("Level4");
 			}
+			else if (LevelName == "Level5")
+			{
+				Application.LoadLevel("TitleScreen");
+			}
+
 		}
 	}
 	

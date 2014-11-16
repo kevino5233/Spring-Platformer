@@ -47,13 +47,21 @@ public class Player : MonoBehaviour
 		float v = this.PlayerController.ShootVerticalAxis;
 		if (Mathf.Abs(h)>=0.4 || Mathf.Abs(v)>=0.4)
 		{
-			if ((Time.time - this.fireTime) > 0.3)
+			if ((Time.time - this.fireTime) > 0.6)
 			{
 				Vector3 dir = new Vector3(h, 0, v);
 				GameObject bullet = (GameObject)Instantiate(BulletPrefab);
 				bullet.transform.localPosition = this.transform.localPosition + dir*5;
 				bullet.GetComponent<Rigidbody>().velocity = dir * 50;
 				bullet.GetComponent<Bullet>().playerNumber = this.PlayerController.PlayerNumber;
+				if (this.PlayerController.PlayerNumber == 0)
+				{
+					bullet.GetComponent<MeshRenderer>().materials[0].color = Color.blue;
+				}
+				else
+				{
+					bullet.GetComponent<MeshRenderer>().materials[0].color = Color.red;
+				}
 				this.fireTime = Time.time;
 			}
 		}
