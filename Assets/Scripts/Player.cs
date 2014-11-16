@@ -81,8 +81,20 @@ public class Player : MonoBehaviour
     	}
 	}
 
-	void UpdateScore(int scoreChange)
+	public void UpdateScore(int scoreChange)
 	{
 		this.Score = this.Score + scoreChange;
+	}
+	
+	public void OnCollisionEnter(Collision collision){
+		if (collision.gameObject.name == "goat"){
+			this.PlayerController.TakeDamage();
+		}
+	}
+	
+	public void OnTriggerEnter(Collider collider){
+		if (collider.gameObject.name == "EndLevel"){
+			//go to next level
+		}
 	}
 }
