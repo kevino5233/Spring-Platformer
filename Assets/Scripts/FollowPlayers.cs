@@ -6,12 +6,13 @@ public class FollowPlayers : MonoBehaviour
 {
 	public GameObject[] Players;
 	public float FollowLerpFactor = 5.0f;
-
+	private bool ended;
 	private Vector3 CameraOffset;
 	private Vector3 TargetCameraPosition;
 
 	void Start ()
 	{
+		ended = false;
 		this.CameraOffset = this.camera.transform.position;
 	}
 
@@ -39,6 +40,14 @@ public class FollowPlayers : MonoBehaviour
 
 	public void CalculateScoreAndEndLevel(string winner)
 	{
+		if (!ended)
+		{
+			ended = true;
+		}
+		else
+		{
+			return;
+		}
 		float p0score = 0;
 		float p1score = 0;
 		p0score = GameObject.Find ("Player0").GetComponent<PlayerController> ().health + GameObject.Find ("Player0").GetComponent<Player> ().Score;
@@ -61,6 +70,9 @@ public class FollowPlayers : MonoBehaviour
 			}
 		}
 		PlayerPrefs.SetString ("winner", winner);
+		GameObject.Find ("Camera").GetComponent<AudioSource> ().Stop ();
+		GameObject.Find ("GameEndSound").GetComponent<AudioSource> ().Play ();
+		Debug.Log (GameObject.Find ("GameEndSound").GetComponent<AudioSource> ());
 		Invoke ("EndLevel", 1);
 	}
 

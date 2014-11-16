@@ -30,7 +30,7 @@ public class HeadsUpDisplay : MonoBehaviour
 		healthColor.SetPixel(0, 0, player.HUDColor);
 		healthColor.Apply();
 		GUI.skin.box.normal.background = healthColor;
-		GUI.Box(new Rect(topLeft.x + outerMargin / 2, topLeft.y + topMargin / 2, width / 2 * player.health / 100, 10), GUIContent.none);
+		GUI.Box(new Rect(topLeft.x + outerMargin / 2, topLeft.y + topMargin / 2, width * player.health / 100, 10), GUIContent.none);
 		
 		GUIStyle scoreStyle = new GUIStyle("label");
 		scoreStyle.fontSize = 40;

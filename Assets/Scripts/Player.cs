@@ -59,27 +59,45 @@ public class Player : MonoBehaviour
 		}
 		if (this.PlayerController.PushButton)
 		{
-			string player = "Player0";
 			if (this.PlayerController.PlayerNumber == 0)
 			{
-				player = "Player1";
+//				GameObject jointPoint = GameObject.Find("JointObjects").GetComponent<CustomJoint>().jointPoints[4];
+				GameObject jointPoint = GameObject.Find("Player1");
+				Vector3 unitVector = this.gameObject.transform.localPosition - jointPoint.transform.localPosition;
+				unitVector = unitVector.normalized;
+				Vector3 forceVector = unitVector*this.PushForce;
+				jointPoint.GetComponent<Rigidbody>().AddForce(forceVector);
 			}
-			Vector3 unitVector = GameObject.Find(player).transform.localPosition - this.gameObject.transform.localPosition;
-			unitVector = unitVector.normalized;
-			Vector3 forceVector = unitVector*this.PushForce;
-			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
+			else
+			{
+//				GameObject jointPoint = GameObject.Find("JointObjects").GetComponent<CustomJoint>().jointPoints[4];
+				GameObject jointPoint = GameObject.Find("Player0");
+				Vector3 unitVector = jointPoint.transform.localPosition - this.gameObject.transform.localPosition;
+				unitVector = unitVector.normalized;
+				Vector3 forceVector = unitVector*this.PushForce;
+				jointPoint.GetComponent<Rigidbody>().AddForce(forceVector);
+			}
 		}
 		else if (this.PlayerController.PullButton)
 		{
-			string player = "Player0";
 			if (this.PlayerController.PlayerNumber == 0)
 			{
-				player = "Player1";
+//				GameObject jointPoint = GameObject.Find("JointObjects").GetComponent<CustomJoint>().jointPoints[4];
+				GameObject jointPoint = GameObject.Find("Player1");
+				Vector3 unitVector = this.gameObject.transform.localPosition - jointPoint.transform.localPosition;
+				unitVector = unitVector.normalized;
+				Vector3 forceVector = unitVector*this.PullForce;
+				jointPoint.GetComponent<Rigidbody>().AddForce(forceVector);
 			}
-			Vector3 unitVector = this.gameObject.transform.localPosition - GameObject.Find(player).transform.localPosition;
-			unitVector = unitVector.normalized;
-			Vector3 forceVector = unitVector*this.PullForce;
-			GameObject.Find(player).GetComponent<Rigidbody>().AddForce(forceVector);
+			else
+			{
+//				GameObject jointPoint = GameObject.Find("JointObjects").GetComponent<CustomJoint>().jointPoints[4];
+				GameObject jointPoint = GameObject.Find("Player0");
+				Vector3 unitVector = this.gameObject.transform.localPosition - jointPoint.transform.localPosition;
+				unitVector = unitVector.normalized;
+				Vector3 forceVector = unitVector*this.PullForce;
+				jointPoint.GetComponent<Rigidbody>().AddForce(forceVector);
+			}
 		}
 	}
 
